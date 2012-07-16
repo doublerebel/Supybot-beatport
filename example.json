@@ -1,0 +1,257 @@
+{
+    "metadata": {
+        "host": "api.beatport.com",
+        "path": "/catalog/search",
+        "query": "query=anjunadeep&sortBy=releaseDate&perPage=2&facets%5B0%5D=fieldType%3Atrack&genreName%3ATrance=",
+        "page": 1,
+        "perPage": 2,
+        "count": 719,
+        "totalPages": 360,
+        "nextQuery": "query=anjunadeep&sortBy=releaseDate&perPage=2&facets%5B0%5D=fieldType%3Atrack&genreName%3ATrance=&page=2",
+        "perPageOptions": [
+            {
+                "value": 50,
+                "applyQuery": "query=anjunadeep&sortBy=releaseDate&perPage=50&facets%5B0%5D=fieldType%3Atrack&genreName%3ATrance="
+            },
+            {
+                "value": 100,
+                "applyQuery": "query=anjunadeep&sortBy=releaseDate&perPage=100&facets%5B0%5D=fieldType%3Atrack&genreName%3ATrance="
+            },
+            {
+                "value": 150,
+                "applyQuery": "query=anjunadeep&sortBy=releaseDate&perPage=150&facets%5B0%5D=fieldType%3Atrack&genreName%3ATrance="
+            }
+        ],
+        "facets": {
+            "fields": []
+        },
+        "appliedFacets": [],
+        "spellcheck": {
+            "suggestions": []
+        }
+    },
+    "results": [
+        {
+            "id": 3289054,
+            "selected": false,
+            "type": "track",
+            "name": "Anjunadeep 04 CD2",
+            "active": true,
+            "mixName": "Continuous DJ Mix",
+            "title": "Anjunadeep 04 CD2 (Continuous DJ Mix)",
+            "slug": "anjunadeep-04-cd2-continuous-dj-mixz",
+            "isrc": "GBEWA1200070",
+            "releaseDate": "2012-02-27",
+            "publishDate": "2012-02-27",
+            "sampleUrl": "http://geo-samples.beatport.com/lofi/3289054.LOFI.mp3",
+            "isPreviewAvailable": null,
+            "isAvailableForMix": true,
+            "rtmpStreamUrl": "rtmp://geo-rtmp-samples.beatport.com/beatport/_definst_/mp3:lofi_samples/items/volumes/volume6/items/3000000/200000/80000/9000/0/50/3289054.LOFI",
+            "exclusive": false,
+            "price": {
+                "code": "usd",
+                "symbol": "$",
+                "value": 149
+            },
+            "audioFormatFee": {
+                "wav": {
+                    "code": "usd",
+                    "symbol": "$",
+                    "value": 100
+                },
+                "aiff": {
+                    "code": "usd",
+                    "symbol": "$",
+                    "value": 100
+                }
+            },
+            "currentStatus": "General Content",
+            "length": "76:37",
+            "bpm": 128,
+            "key": {
+                "standard": {
+                    "letter": "A",
+                    "sharp": true,
+                    "flat": false,
+                    "chord": "major"
+                }
+            },
+            "saleType": "mixOnly",
+            "artists": [
+                {
+                    "id": 8998,
+                    "name": "Jaytech",
+                    "slug": "jaytech",
+                    "type": "artist"
+                }
+            ],
+            "genres": [
+                {
+                    "id": 15,
+                    "name": "Progressive House",
+                    "slug": "progressive-house",
+                    "type": "genre"
+                }
+            ],
+            "subGenres": [],
+            "charts": [],
+            "release": {
+                "id": 870269,
+                "name": "Anjunadeep 04",
+                "type": "release",
+                "slug": "anjunadeep-04"
+            },
+            "label": {
+                "id": 1390,
+                "name": "Anjunadeep",
+                "type": "label",
+                "slug": "anjunadeep"
+            },
+            "images": {
+                "small": {
+                    "width": 30,
+                    "height": 30,
+                    "url": "http://geo-media.beatport.com/image/4998507.jpg",
+                    "secureUrl": "https://media.beatport.com/image/4998507.jpg"
+                },
+                "medium": {
+                    "width": 60,
+                    "height": 60,
+                    "url": "http://geo-media.beatport.com/image/4998508.jpg",
+                    "secureUrl": "https://media.beatport.com/image/4998508.jpg"
+                },
+                "large": {
+                    "width": 500,
+                    "height": 500,
+                    "url": "http://geo-media.beatport.com/image/4998509.jpg",
+                    "secureUrl": "https://media.beatport.com/image/4998509.jpg"
+                },
+                "waveform": {
+                    "width": 1500,
+                    "height": 250,
+                    "url": "http://geo-media.beatport.com/image/4998600.png",
+                    "secureUrl": "https://media.beatport.com/image/4998600.png"
+                }
+            },
+            "dynamicImages": {
+                "main": {
+                    "url": "//geo-media.beatport.com/image_size{hq}/{w}x{h}/4998509.jpg"
+                },
+                "waveform": {
+                    "url": "//geo-media.beatport.com/image_size{hq}/{w}x{h}/4998600.png"
+                }
+            }
+        },
+        {
+            "id": 3289053,
+            "selected": false,
+            "type": "track",
+            "name": "Anjunadeep 04 CD1",
+            "active": true,
+            "mixName": "Continuous DJ Mix",
+            "title": "Anjunadeep 04 CD1 (Continuous DJ Mix)",
+            "slug": "anjunadeep-04-cd1-continuous-dj-mix",
+            "isrc": "GBEWA1200069",
+            "releaseDate": "2012-02-27",
+            "publishDate": "2012-02-27",
+            "sampleUrl": "http://geo-samples.beatport.com/lofi/3289053.LOFI.mp3",
+            "isPreviewAvailable": null,
+            "isAvailableForMix": true,
+            "rtmpStreamUrl": "rtmp://geo-rtmp-samples.beatport.com/beatport/_definst_/mp3:lofi_samples/items/volumes/volume5/items/3000000/200000/80000/9000/0/50/3289053.LOFI",
+            "exclusive": false,
+            "price": {
+                "code": "usd",
+                "symbol": "$",
+                "value": 149
+            },
+            "audioFormatFee": {
+                "wav": {
+                    "code": "usd",
+                    "symbol": "$",
+                    "value": 100
+                },
+                "aiff": {
+                    "code": "usd",
+                    "symbol": "$",
+                    "value": 100
+                }
+            },
+            "currentStatus": "General Content",
+            "length": "76:30",
+            "bpm": 125,
+            "key": {
+                "standard": {
+                    "letter": "D",
+                    "sharp": false,
+                    "flat": false,
+                    "chord": "major"
+                }
+            },
+            "saleType": "mixOnly",
+            "artists": [
+                {
+                    "id": 95557,
+                    "name": "James Grant",
+                    "slug": "james-grant",
+                    "type": "artist"
+                }
+            ],
+            "genres": [
+                {
+                    "id": 15,
+                    "name": "Progressive House",
+                    "slug": "progressive-house",
+                    "type": "genre"
+                }
+            ],
+            "subGenres": [],
+            "charts": [],
+            "release": {
+                "id": 870269,
+                "name": "Anjunadeep 04",
+                "type": "release",
+                "slug": "anjunadeep-04"
+            },
+            "label": {
+                "id": 1390,
+                "name": "Anjunadeep",
+                "type": "label",
+                "slug": "anjunadeep"
+            },
+            "images": {
+                "small": {
+                    "width": 30,
+                    "height": 30,
+                    "url": "http://geo-media.beatport.com/image/4998507.jpg",
+                    "secureUrl": "https://media.beatport.com/image/4998507.jpg"
+                },
+                "medium": {
+                    "width": 60,
+                    "height": 60,
+                    "url": "http://geo-media.beatport.com/image/4998508.jpg",
+                    "secureUrl": "https://media.beatport.com/image/4998508.jpg"
+                },
+                "large": {
+                    "width": 500,
+                    "height": 500,
+                    "url": "http://geo-media.beatport.com/image/4998509.jpg",
+                    "secureUrl": "https://media.beatport.com/image/4998509.jpg"
+                },
+                "waveform": {
+                    "width": 1500,
+                    "height": 250,
+                    "url": "http://geo-media.beatport.com/image/4998595.png",
+                    "secureUrl": "https://media.beatport.com/image/4998595.png"
+                }
+            },
+            "dynamicImages": {
+                "main": {
+                    "url": "//geo-media.beatport.com/image_size{hq}/{w}x{h}/4998509.jpg"
+                },
+                "waveform": {
+                    "url": "//geo-media.beatport.com/image_size{hq}/{w}x{h}/4998595.png"
+                }
+            }
+        }
+    ]
+}
