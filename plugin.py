@@ -3,16 +3,13 @@
 # Licensed WTFPL
 ###
 
-import socket
+import os
 import string
 import urllib
 
 import supybot.utils as utils
 from supybot.commands import *
-import supybot.plugins as plugins
-import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
-import os
 
 simplejson = None
 
@@ -72,6 +69,8 @@ class _Plugin(callbacks.Plugin):
         facets.append('fieldType:track')
         opts['facets'] = facets #'&'.join(facets)
         
+        print '%s?%s' % (searchurl, urllib.urlencode(opts))
+
         fd = utils.web.getUrlFd('%s?%s' % (searchurl,
                                            urllib.urlencode(opts)),
                                            headers)
