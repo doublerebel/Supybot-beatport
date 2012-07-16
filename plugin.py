@@ -84,16 +84,7 @@ class _Plugin(callbacks.Plugin):
         else:
             trackUrl = 'http://www.beatport.com/track/'
             out = []
-            print json
             for result in json['results']:
-                print """
-
-#
-##results
-#
-
-                """
-                print result
                 if 'title' in result:
                     title = result['title'].encode('utf-8')
                     url = trackUrl + result['slug'].encode('utf-8') + '/' + str(result['id']).encode('utf-8')
