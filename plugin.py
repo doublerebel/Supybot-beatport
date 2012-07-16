@@ -4,6 +4,7 @@
 ###
 
 import socket
+import string
 import urllib
 
 import supybot.utils as utils
@@ -54,7 +55,7 @@ class _Plugin(callbacks.Plugin):
         
         searchTerms = ' '.join(things)
         searchTerms = string.split(searchTerms, 'genre:')
-        if searchTerms[1]:
+        if len(searchTerms) > 1:
             facets.append('genreName:' + string.capitalize(searchTerms[1].strip()))
         searchTerms = searchTerms[0].strip()
         
@@ -65,8 +66,8 @@ class _Plugin(callbacks.Plugin):
         # http://api.beatport.com/catalog/3/search?query=anjunadeep&perPage=5&sortBy=releaseDate&facets[]=fieldType:track&genreName:Trance
         
         opts['query'] = searchTerms
-        opts['perPage'] = botPort.numResults
-        opts['sortBy'] = botPort.sortBy
+        opts['perPage'] = self.registryValue('numResults')
+        opts['sortBy'] = self.registryValue('sortBy')
 
         facets.append('fieldType:track')
         opts['facets'] = facets #'&'.join(facets)
@@ -82,10 +83,21 @@ class _Plugin(callbacks.Plugin):
             pass
         else:
             trackUrl = 'http://www.beatport.com/track/'
-            for result in json.results:
-                title = result['title'].encode('utf-8')
-                url = trackUrl + result['slug'].encode('utf-8') + '/' + result['id'].encode('utf-8')
-                out.append('%s %s' % (title, url))
+            out = []
+            print json
+            for result in json['results']:
+                print """
+
+#
+##results
+#
+
+                """
+                print result
+                if 'title' in result:
+                    title = result['title'].encode('utf-8')
+                    url = trackUrl + result['slug'].encode('utf-8') + '/' + str(result['id']).encode('utf-8')
+                    out.append('%s %s' % (title, url))
         if out:
             irc.reply(' | '.join(out))
         else:
