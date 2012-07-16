@@ -52,4 +52,4 @@ conf.registerGlobalValue(P, 'numResults',
     registry.PositiveInteger(5, """Determines the number of search results returned."""))
 
 conf.registerGlobalValue(P, 'sortBy',
-    registry.String('', """Determines the sort order of search results."""))
+    registry.String('releaseDate', """Determines the sort order of search results."""))

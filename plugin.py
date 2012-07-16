@@ -67,12 +67,13 @@ class _Plugin(callbacks.Plugin):
         opts['sortBy'] = self.registryValue('sortBy')
 
         facets.append('fieldType:track')
-        opts['facets'] = facets #'&'.join(facets)
+
+        params = urllib.urlencode(opts) + '&facets[]=' + '&'.join(facets)
         
-        print '%s?%s' % (searchurl, urllib.urlencode(opts))
+        print '%s?%s' % (searchurl, params)
 
         fd = utils.web.getUrlFd('%s?%s' % (searchurl,
-                                           urllib.urlencode(opts)),
+                                           params),
                                            headers)
         json = simplejson.load(fd)
         fd.close()
