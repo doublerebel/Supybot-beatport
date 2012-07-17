@@ -4,7 +4,7 @@
 ###
 
 import os
-import string
+import re
 import urllib
 
 import supybot.utils as utils
@@ -50,25 +50,39 @@ class _Plugin(callbacks.Plugin):
         opts = {}
         facets = []
         
-        searchTerms = ' '.join(things)
-        searchTerms = string.split(searchTerms, 'genre:')
-        if len(searchTerms) > 1:
-            facets.append('genreName:' + string.capitalize(searchTerms[1].strip()))
-        searchTerms = searchTerms[0].strip()
+        searchTerms = ' '.join(things).lower()
+        reKeywords = '^([\s\-_a-zA-Z0-9&]+)'
+        reFacets = '((?:genre|artist):\s?[\-_a-zA-Z0-9&]+)'
         
+        for match in re.findall(reFacets, searchTerms):
+            match = match.split(':')
+            facet = match[0]
+            value = match[1].strip()
+            if facet == 'genre':
+                if value == 'drum&bass' or value == 'drum-and-bass' or value == 'd&b' or value == 'dnb':
+                    facets.append('genreId:1') # workaround for broken Drum & Bass API call
+                else:
+                    facets.append('genreName:' + value.capitalize())
+            elif facet == 'artist':
+                facets.append('artistName:' + value.capitalize())
+            else:
+                facets.append(facet + ':' + value)
+
+        match = re.search(reKeywords + reFacets, searchTerms)
+        if match:
+            opts['query'] = match.group(1).strip()
+
         searchurl = 'http://api.beatport.com/catalog/3/search'
         headers = utils.web.defaultHeaders
 
         # Construct a URL like:
-        # http://api.beatport.com/catalog/3/search?query=anjunadeep&perPage=5&sortBy=releaseDate&facets[]=fieldType:track&genreName:Trance
+        # http://api.beatport.com/catalog/3/search?query=anjunadeep&perPage=5&sortBy=releaseDate&facets[]=fieldType:track&facets[]=genreName:Trance
         
-        opts['query'] = searchTerms
         opts['perPage'] = self.registryValue('numResults')
         opts['sortBy'] = self.registryValue('sortBy')
 
         facets.append('fieldType:track')
-
-        params = urllib.urlencode(opts) + '&facets[]=' + '&'.join(facets)
+        params = urllib.urlencode(opts) + '&facets[]=' + '&facets[]='.join(facets)
         
         print '%s?%s' % (searchurl, params)
 
