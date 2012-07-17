@@ -39,13 +39,15 @@ PluginName = os.path.dirname(__file__).split(os.sep)[-1]
 
 class _Plugin(callbacks.Plugin):
 
-    """Usage: @beatport <searchterms> genre: <genrename>"""
+    """Usage: @beatport <searchterms> [genre:<genrename>, artist:<artistname>, otherfacet:<value>]"""
     threaded = True
 
     def beatport(self, irc, msg, args, things):
-        """ <searchterms> [genre:<genrename>]
+        """ <searchterms> [genre:<genrename>, artist:<artistname>, otherfacet:<value>]
         
         Displays results from beatport.
+        For more specifying facets, see documentation at:
+        http://api.beatport.com
         """
         opts = {}
         facets = []
