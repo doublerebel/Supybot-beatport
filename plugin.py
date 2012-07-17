@@ -46,6 +46,8 @@ class _Plugin(callbacks.Plugin):
         """ <searchterms> [genre:<genrename>, artist:<artistname>, otherfacet:<value>]
         
         Displays results from beatport.
+
+        '+' may be used as a space character in keywords and artist and genre names.
         For more specifying facets, see documentation at:
         http://api.beatport.com
         """
@@ -53,20 +55,21 @@ class _Plugin(callbacks.Plugin):
         facets = []
         
         searchTerms = ' '.join(things).lower()
-        reKeywords = '^([\s\-_a-zA-Z0-9&]+)'
-        reFacets = '((?:genre|artist):\s?[\-_a-zA-Z0-9&]+)'
+        reKeywords = '^([\s\-+_a-zA-Z0-9&]+)'
+        reFacets = '((?:genre|artist):\s?[\-+_a-zA-Z0-9&]+)'
         
         for match in re.findall(reFacets, searchTerms):
             match = match.split(':')
             facet = match[0]
-            value = match[1].strip()
+            # API accepts '+' for space character and expects each word of a facet to be capitalized
+            value = '+'.join([word.capitalize() for word in match[1].strip().split('+')])
             if facet == 'genre':
                 if value == 'drum&bass' or value == 'drum-and-bass' or value == 'd&b' or value == 'dnb':
                     facets.append('genreId:1') # workaround for broken Drum & Bass API call
                 else:
-                    facets.append('genreName:' + value.capitalize())
+                    facets.append('genreName:' + value)
             elif facet == 'artist':
-                facets.append('artistName:' + value.capitalize())
+                facets.append('artistName:' + value)
             else:
                 facets.append(facet + ':' + value)
 
