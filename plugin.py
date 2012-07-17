@@ -73,7 +73,10 @@ class _Plugin(callbacks.Plugin):
             else:
                 facets.append(facet + ':' + value)
 
-        match = re.search(reKeywords + reFacets, searchTerms)
+        searchPattern = reKeywords
+        if len(facets):
+            searchPattern += reFacets
+        match = re.search(searchPattern, searchTerms)
         if match:
             opts['query'] = match.group(1).strip()
 
