@@ -64,7 +64,7 @@ class _Plugin(callbacks.Plugin):
             # API accepts '+' for space character and expects each word of a facet to be capitalized
             value = '+'.join([word.capitalize() for word in match[1].strip().split('+')])
             if facet == 'genre':
-                if value == 'drum&bass' or value == 'drum-and-bass' or value == 'd&b' or value == 'dnb':
+                if value == 'Drum&bass' or value == 'Drum-and-bass' or value == 'D&b' or value == 'Dnb':
                     facets.append('genreId:1') # workaround for broken Drum & Bass API call
                 else:
                     facets.append('genreName:' + value)
