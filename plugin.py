@@ -43,16 +43,7 @@ class _Plugin(callbacks.Plugin):
     track:<trackname>, otherfacet:<value>]"""
     threaded = True
 
-    def beatport(self, irc, msg, args, things):
-        """ <searchterms> [genre:<genrename>, artist:<artistname>, track:<trackname>,
-        otherfacet:<value>]
-        
-        Displays results from beatport.
-
-        '+' may be used as a space character in keywords and artist and genre names.
-        For more specifying facets, see documentation at:
-        http://api.beatport.com
-        """
+    def queryBeatport(self, irc, msg, args, things):
         opts = {}
         facets = []
         
@@ -104,6 +95,21 @@ class _Plugin(callbacks.Plugin):
         json = simplejson.load(fd)
         fd.close()
 
+        return json
+
+    def beatport(self, irc, msg, args, things):
+        """ <searchterms> [genre:<genrename>, artist:<artistname>, track:<trackname>,
+        otherfacet:<value>]
+        
+        Displays results from beatport.
+
+        '+' may be used as a space character in keywords and artist and genre names.
+        For more specifying facets, see documentation at:
+        http://api.beatport.com
+        """
+        preview = things[0] == 'preview' and things.pop(0)
+        json = self.queryBeatport(irc, msg, args, things)
+
         if not json:
             irc.reply('Receiving JSON response from Beatport servers failed.')
             pass
@@ -113,7 +119,10 @@ class _Plugin(callbacks.Plugin):
             for result in json['results']:
                 if 'title' in result:
                     title = result['title'].encode('utf-8')
-                    url = trackUrl + result['slug'].encode('utf-8') + '/' + str(result['id']).encode('utf-8')
+                    if preview:
+                        url = result['sampleUrl'].encode('utf-8')
+                    else:
+                        url = trackUrl + result['slug'].encode('utf-8') + '/' + str(result['id']).encode('utf-8')
                     out.append('%s %s' % (title, url))
         if out:
             irc.reply(' | '.join(out))
