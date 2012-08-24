@@ -39,8 +39,8 @@ PluginName = os.path.dirname(__file__).split(os.sep)[-1]
 
 class _Plugin(callbacks.Plugin):
 
-    """Usage: @beatport <searchterms> [genre:<genrename>, artist:<artistname>, 
-    track:<trackname>, otherfacet:<value>]"""
+    """Usage: @beatport [preview] <searchterms> [genre:<genrename>,
+    artist:<artistname>, track:<trackname>, otherfacet:<value>]"""
     threaded = True
 
     def queryBeatport(self, irc, msg, args, things):
@@ -98,8 +98,8 @@ class _Plugin(callbacks.Plugin):
         return json
 
     def beatport(self, irc, msg, args, things):
-        """ <searchterms> [genre:<genrename>, artist:<artistname>, track:<trackname>,
-        otherfacet:<value>]
+        """ [preview] <searchterms> [genre:<genrename>, artist:<artistname>,
+        track:<trackname>, otherfacet:<value>]
         
         Displays results from beatport.
 
