@@ -39,11 +39,13 @@ PluginName = os.path.dirname(__file__).split(os.sep)[-1]
 
 class _Plugin(callbacks.Plugin):
 
-    """Usage: @beatport <searchterms> [genre:<genrename>, artist:<artistname>, otherfacet:<value>]"""
+    """Usage: @beatport <searchterms> [genre:<genrename>, artist:<artistname>, 
+    track:<trackname>, otherfacet:<value>]"""
     threaded = True
 
     def beatport(self, irc, msg, args, things):
-        """ <searchterms> [genre:<genrename>, artist:<artistname>, otherfacet:<value>]
+        """ <searchterms> [genre:<genrename>, artist:<artistname>, track:<trackname>,
+        otherfacet:<value>]
         
         Displays results from beatport.
 
@@ -56,7 +58,7 @@ class _Plugin(callbacks.Plugin):
         
         searchTerms = ' '.join(things).lower()
         reKeywords = '^([\s\-+_a-zA-Z0-9&]+)'
-        reFacets = '((?:genre|artist):\s?[\-+_a-zA-Z0-9&]+)'
+        reFacets = '((?:genre|artist|track):\s?[\-+_a-zA-Z0-9&]+)'
         
         for match in re.findall(reFacets, searchTerms):
             match = match.split(':')
@@ -70,6 +72,8 @@ class _Plugin(callbacks.Plugin):
                     facets.append('genreName:' + value)
             elif facet == 'artist':
                 facets.append('artistName:' + value)
+            elif facet == 'track':
+                facets.append('trackName:' + value)
             else:
                 facets.append(facet + ':' + value)
 
