@@ -118,12 +118,17 @@ class _Plugin(callbacks.Plugin):
             out = []
             for result in json['results']:
                 if 'title' in result:
+                    artists = []
+                    for artist in result['artists']:
+                        if artist['type'] == 'artist':
+                            artists.append(artist['name'])
+                    artists = ', '.join(artists)
                     title = result['title'].encode('utf-8')
                     if preview:
                         url = result['sampleUrl'].encode('utf-8')
                     else:
                         url = trackUrl + result['slug'].encode('utf-8') + '/' + str(result['id']).encode('utf-8')
-                    out.append('%s %s' % (title, url))
+                    out.append('%s - %s %s' % (artists, title, url))
         if out:
             irc.reply(' | '.join(out))
         else:
